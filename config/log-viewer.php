@@ -47,13 +47,13 @@ return [
 
     'route'         => [
         'enabled'    => true,
-        
+
         'attributes' => [
             //BACKPACK: backpack route
             'prefix'     => config('backpack.base.route_prefix', 'admin').'/log-viewer',
 
             //BACKPACK: admin middleware is needed
-            'middleware' => env('ARCANEDEV_LOGVIEWER_MIDDLEWARE') ? explode(',', env('ARCANEDEV_LOGVIEWER_MIDDLEWARE')) : ['web','admin'] ,
+            'middleware' => env('ARCANEDEV_LOGVIEWER_MIDDLEWARE') ? explode(',', env('ARCANEDEV_LOGVIEWER_MIDDLEWARE')) : ['web', 'admin'],
         ],
     ],
 
@@ -99,8 +99,8 @@ return [
      | -----------------------------------------------------------------
      */
 
-    'icons' =>  [
-        /**
+    'icons' => [
+        /*
          * Font awesome >= 4.3
          * http://fontawesome.io/icons/
          */
@@ -120,7 +120,7 @@ return [
      | -----------------------------------------------------------------
      */
 
-    'colors' =>  [
+    'colors' => [
         'levels'    => [
             'empty'     => '#D1D1D1',
             'all'       => '#8A8A8A',
