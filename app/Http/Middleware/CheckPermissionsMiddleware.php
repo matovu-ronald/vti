@@ -23,12 +23,11 @@ class CheckPermissionsMiddleware
             } else {
                 return abort(403, 'You have been banned from accessing the system');
             }
-
-        }else {
-            if ($currentUser->hasRole('admin') ) {
+        } else {
+            if ($currentUser->hasRole('admin')) {
                 // You can perform all logic here for the admin
             }
-            if (!check_user_permissions($request)) {
+            if (! check_user_permissions($request)) {
                 if ($request->json()) {
                     return response(['message', 'Unauthorized.'], 403);
                 } else {

@@ -2,16 +2,14 @@
 
 namespace App\Http\Controllers\Admin;
 
-use Backpack\CRUD\app\Http\Controllers\CrudController;
-
-// VALIDATION: change the requests to match your own file names if you need form validation
 use App\Http\Requests\BusinessRequest as StoreRequest;
+// VALIDATION: change the requests to match your own file names if you need form validation
 use App\Http\Requests\BusinessRequest as UpdateRequest;
+use Backpack\CRUD\app\Http\Controllers\CrudController;
 use Backpack\CRUD\CrudPanel;
 
 /**
- * Class BusinessCrudController
- * @package App\Http\Controllers\Admin
+ * Class BusinessCrudController.
  * @property-read CrudPanel $crud
  */
 class BusinessCrudController extends CrudController
@@ -24,7 +22,7 @@ class BusinessCrudController extends CrudController
         |--------------------------------------------------------------------------
         */
         $this->crud->setModel('App\Models\Business');
-        $this->crud->setRoute(config('backpack.base.route_prefix') . '/business');
+        $this->crud->setRoute(config('backpack.base.route_prefix').'/business');
         $this->crud->setEntityNameStrings('business', 'businesses');
 
         /*
