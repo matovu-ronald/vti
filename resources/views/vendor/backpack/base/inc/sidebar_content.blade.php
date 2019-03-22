@@ -3,7 +3,10 @@
 
 
 
-<li><a href="{{ backpack_url('business') }}"><i class="fa fa-institution"></i> <span>Business</span></a></li>
+<li><a href="{{ backpack_url('bioprofile') }}"><i class="fa fa-graduation-cap"></i> <span>Service Providers</span></a></li>
+<li><a href="{{ backpack_url('course') }}"><i class="fa fa-pencil-square"></i> <span>Courses</span></a></li>
+<li><a href="{{ backpack_url('vti') }}"><i class="fa fa-university"></i> <span>Vocational Training Institutes</span></a></li>
+<li><a href="{{ backpack_url('business') }}"><i class="fa fa-building"></i> <span>Businesses</span></a></li>
 
 <!-- Users, Roles Permissions -->
 <li class="treeview">
@@ -12,6 +15,13 @@
         <li><a href="{{ backpack_url('user') }}"><i class="fa fa-user"></i> <span>Users</span></a></li>
         <li><a href="{{ backpack_url('role') }}"><i class="fa fa-group"></i> <span>Roles</span></a></li>
         <li><a href="{{ backpack_url('permission') }}"><i class="fa fa-key"></i> <span>Permissions</span></a></li>
+    </ul>
+</li>
+
+<li class="treeview">
+    <a href="#"><i class="fa fa-file-pdf-o"></i> <span>Statistical Analysis</span> <i class="fa fa-angle-left pull-right"></i></a>
+    <ul class="treeview-menu">
+        <li><a href="#"><i class="fa fa-file-o"></i> <span>Reports</span></a></li>
     </ul>
 </li>
 
