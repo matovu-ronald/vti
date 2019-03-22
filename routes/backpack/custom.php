@@ -14,4 +14,5 @@ Route::group([
     CRUD::resource('business', 'BusinessCrudController');
     CRUD::resource('vti', 'VtiCrudController');
     CRUD::resource('course', 'CourseCrudController');
+    CRUD::resource('bioprofile', 'BioProfileCrudController');
 }); // this should be the absolute last line of this file
