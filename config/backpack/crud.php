@@ -24,7 +24,7 @@ return [
     'tabs_type' => 'horizontal', //options: horizontal, vertical
 
     // How would you like the validation errors to be shown?
-    'show_grouped_errors' => true,
+    'show_grouped_errors' => false,
     'show_inline_errors'  => true,
 
     // Here you may override the css-classes for the content section of the create view globally
@@ -58,7 +58,7 @@ return [
     // How many items should be shown by default by the Datatable?
     // This value can be overwritten on a specific CRUD by calling
     // $this->crud->setDefaultPageLength(50);
-    'default_page_length' => 25,
+    'default_page_length' => 13,
 
     // A 1D array of options which will be used for both the displayed option and the value, or
     // A 2D array in which the first array is used to define the value options and the second array the displayed options
