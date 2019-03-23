@@ -5,6 +5,8 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Requests\CourseRequest as StoreRequest;
 // VALIDATION: change the requests to match your own file names if you need form validation
 use App\Http\Requests\CourseRequest as UpdateRequest;
+use App\Traits\CrudColsTrait;
+use App\Traits\CrudFieldsTrait;
 use Backpack\CRUD\app\Http\Controllers\CrudController;
 use Backpack\CRUD\CrudPanel;
 
@@ -14,6 +16,9 @@ use Backpack\CRUD\CrudPanel;
  */
 class CourseCrudController extends CrudController
 {
+    use CrudColsTrait;
+    use CrudFieldsTrait;
+
     public function setup()
     {
         /*
@@ -34,9 +39,42 @@ class CourseCrudController extends CrudController
         // TODO: remove setFromDb() and manually define Fields and Columns
         $this->crud->setFromDb();
 
+        $vti = $this->oneMany(
+            'vti_id',
+            'Vocational Training Institute',
+            'vti',
+            'name',
+            'App\Models\Vti'
+        );
+        $name = $this->text('name', 'Course Name', 'Course Name');
+        $description = $this->textarea('description', 'Course description');
+
+        $this->crud->addFields([$name, $description, $vti]);
+
+        // Columns
+        $nameColumn = $this->textCol('name', 'Course Name');
+        $descriptionColumn = $this->textCol('description', 'Course Description');
+        $vtiColumn = $this->select(
+            'vti_id',
+            'Vocational Training Institute',
+            'vti',
+            'name',
+            'App\Models\Vti'
+        );
+
+        $this->crud->addColumns([$nameColumn, $descriptionColumn, $vtiColumn]);
+
+        $this->crud->allowAccess('show');
+
+        $this->crud->enableBulkActions();
+        $this->crud->addBulkDeleteButton();
+
         // add asterisk for fields that are required in CourseRequest
         $this->crud->setRequiredFields(StoreRequest::class, 'create');
         $this->crud->setRequiredFields(UpdateRequest::class, 'edit');
+
+        // Filters
+        $this->addCustomCrudFilters();
     }
 
     public function store(StoreRequest $request)
@@ -55,5 +93,32 @@ class CourseCrudController extends CrudController
         // your additional operations after save here
         // use $this->data['entry'] or $this->crud->entry
         return $redirect_location;
+    }
+
+    /**
+     * Filters
+     */
+    public function addCustomCrudFilters()
+    {
+
+        $this->crud->addFilter([ // select2 filter
+            'name' => 'vti_id',
+            'type' => 'select2',
+            'label'=> 'Filter By Vocational Training Institute',
+        ], function () {
+            return \App\Models\Vti::all()->keyBy('id')->pluck('name', 'id')->toArray();
+        }, function ($value) { // if the filter is active
+            $this->crud->addClause('where', 'vti_id', $value);
+        });
+
+        $this->crud->addFilter([ // text filter
+            'type'  => 'text',
+            'name'  => 'name',
+            'label' => 'Filter by Course Name',
+        ],
+            false,
+            function ($value) { // if the filter is active
+                $this->crud->addClause('where', 'name', 'LIKE', "%$value%");
+            });
     }
 }
