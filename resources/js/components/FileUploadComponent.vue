@@ -4,7 +4,7 @@
             <h4>Service Providers Imported Successfully</h4>
         </div>
         <multiple-file-uploader
-                postURL="http://127.0.0.1:8000/admin/import/service/providers"
+                postURL="http://127.0.0.1:8000/api/import/service/providers"
                 successMessagePath=""
                 errorMessagePath=""
                 :minItems="1"
@@ -32,6 +32,7 @@
         methods: {
             success_handler: function(response){
                 this.successUpload = true;
+                console.log(response.data)
             },
         }
     }

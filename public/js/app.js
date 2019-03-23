@@ -1849,6 +1849,7 @@ __webpack_require__.r(__webpack_exports__);
   methods: {
     success_handler: function success_handler(response) {
       this.successUpload = true;
+      console.log(response.data);
     }
   }
 });
@@ -19560,7 +19561,7 @@ var render = function() {
       _vm._v(" "),
       _c("multiple-file-uploader", {
         attrs: {
-          postURL: "http://127.0.0.1:8000/admin/import/service/providers",
+          postURL: "http://127.0.0.1:8000/api/import/service/providers",
           successMessagePath: "",
           errorMessagePath: "",
           minItems: 1,
