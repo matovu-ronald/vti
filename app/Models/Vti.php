@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use App\Scopes\LatestScope;
 use Backpack\CRUD\CrudTrait;
 use Illuminate\Database\Eloquent\Model;
 
@@ -62,6 +63,18 @@ class Vti extends Model
     | SCOPES
     |--------------------------------------------------------------------------
     */
+
+    /**
+     * The "booting" method of the model.
+     *
+     * @return void
+     */
+    protected static function boot()
+    {
+        parent::boot();
+
+        static::addGlobalScope(new LatestScope);
+    }
 
     /*
     |--------------------------------------------------------------------------

@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use App\Scopes\LatestScope;
 use Backpack\CRUD\CrudTrait;
 use Illuminate\Database\Eloquent\Model;
 
@@ -19,7 +20,7 @@ class Course extends Model
     // protected $primaryKey = 'id';
     // public $timestamps = false;
     // protected $guarded = ['id'];
-    protected $fillable = [];
+    protected $fillable = ['vti_id', 'name', 'description'];
     // protected $hidden = [];
     // protected $dates = [];
 
@@ -48,6 +49,18 @@ class Course extends Model
     | SCOPES
     |--------------------------------------------------------------------------
     */
+
+    /**
+     * The "booting" method of the model.
+     *
+     * @return void
+     */
+    protected static function boot()
+    {
+        parent::boot();
+
+        static::addGlobalScope(new LatestScope);
+    }
 
     /*
     |--------------------------------------------------------------------------
