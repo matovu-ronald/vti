@@ -1,9 +1,12 @@
 <?php
 
+//use Database\TruncateTable;
 use Illuminate\Database\Seeder;
+//use Database\DisableForeignKeys;
 
 class DatabaseSeeder extends Seeder
 {
+//    use DisableForeignKeys, TruncateTable;
     /**
      * Seed the application's database.
      *
@@ -11,6 +14,13 @@ class DatabaseSeeder extends Seeder
      */
     public function run()
     {
-        // $this->call(UsersTableSeeder::class);
+//        $this->disableForeignKeys();
+//
+//
+//        $this->truncateMultiple(['businesses', 'vtis', 'courses']);
+//
+//        $this->call(BusinessTableSeeder::class);
+//
+//        $this->enableForeignKeys();
     }
 }
