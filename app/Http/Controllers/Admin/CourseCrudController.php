@@ -96,11 +96,10 @@ class CourseCrudController extends CrudController
     }
 
     /**
-     * Filters
+     * Filters.
      */
     public function addCustomCrudFilters()
     {
-
         $this->crud->addFilter([ // select2 filter
             'name' => 'vti_id',
             'type' => 'select2',
