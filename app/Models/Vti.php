@@ -49,6 +49,14 @@ class Vti extends Model
         return $this->belongsTo('App\Models\Business');
     }
 
+    /**
+     * Get the courses for the vtis.
+     */
+    public function courses()
+    {
+        return $this->hasMany('App\Models\Course');
+    }
+
     /*
     |--------------------------------------------------------------------------
     | SCOPES

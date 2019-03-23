@@ -35,6 +35,14 @@ class Course extends Model
     |--------------------------------------------------------------------------
     */
 
+    /**
+     * Get the vti that owns the course.
+     */
+    public function vti()
+    {
+        return $this->belongsTo('App\Models\Vti');
+    }
+
     /*
     |--------------------------------------------------------------------------
     | SCOPES
