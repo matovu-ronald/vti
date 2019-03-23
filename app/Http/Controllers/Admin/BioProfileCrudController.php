@@ -2,16 +2,14 @@
 
 namespace App\Http\Controllers\Admin;
 
-use Backpack\CRUD\app\Http\Controllers\CrudController;
-
-// VALIDATION: change the requests to match your own file names if you need form validation
 use App\Http\Requests\BioProfileRequest as StoreRequest;
+// VALIDATION: change the requests to match your own file names if you need form validation
 use App\Http\Requests\BioProfileRequest as UpdateRequest;
+use Backpack\CRUD\app\Http\Controllers\CrudController;
 use Backpack\CRUD\CrudPanel;
 
 /**
- * Class BioProfileCrudController
- * @package App\Http\Controllers\Admin
+ * Class BioProfileCrudController.
  * @property-read CrudPanel $crud
  */
 class BioProfileCrudController extends CrudController
@@ -24,7 +22,7 @@ class BioProfileCrudController extends CrudController
         |--------------------------------------------------------------------------
         */
         $this->crud->setModel('App\Models\BioProfile');
-        $this->crud->setRoute(config('backpack.base.route_prefix') . '/bioprofile');
+        $this->crud->setRoute(config('backpack.base.route_prefix').'/bioprofile');
         $this->crud->setEntityNameStrings('bioprofile', 'bio_profiles');
 
         /*

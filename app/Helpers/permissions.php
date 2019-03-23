@@ -1,14 +1,14 @@
 <?php
 
 /**
- * Check whether a user has permission to perform a certain action
+ * Check whether a user has permission to perform a certain action.
  *
  * @param $request
  * @param null $actionName
  * @param null $id
  * @return bool
  */
-function check_user_permissions($request, $actionName = NULL, $id = NULL)
+function check_user_permissions($request, $actionName = null, $id = null)
 {
     /* Get currently logged in user */
     $currentUser = auth()->user();
@@ -23,7 +23,7 @@ function check_user_permissions($request, $actionName = NULL, $id = NULL)
 
     /* Get controller and action name from the action name */
     list($controller, $method) = explode('@', $currentActionName);
-    $controller = str_replace(["App\\Http\\Controllers\Api\\", "Controller"], "", $controller);
+    $controller = str_replace(["App\\Http\\Controllers\Api\\", 'Controller'], '', $controller);
 
     /* Create, Read, Update, Delete mapping to controller actions */
     $crudPermissionMap = [
@@ -36,7 +36,7 @@ function check_user_permissions($request, $actionName = NULL, $id = NULL)
     foreach ($crudPermissionMap as $permission => $methods) {
         if (in_array($method, $methods)) {
 
-            /**
+            /*
              * If you have a specific restriction you want to make on a user not accessing
              * Another persons resource replicate this code below
              * Retrieve the route parameter check whether the current user id and
@@ -63,9 +63,7 @@ function check_user_permissions($request, $actionName = NULL, $id = NULL)
                 return false;
             }*/
 
-
             break;
-
         }
     }
 
@@ -73,7 +71,7 @@ function check_user_permissions($request, $actionName = NULL, $id = NULL)
 }
 
 /**
- * Convert word from pascal or camel case to snake case
+ * Convert word from pascal or camel case to snake case.
  *
  * @param $input
  * @return string
@@ -86,4 +84,3 @@ function from_camel_case($input)
         $match = $match == strtoupper($match) ? strtolower($match) : lcfirst($match);
     }
 }
-
