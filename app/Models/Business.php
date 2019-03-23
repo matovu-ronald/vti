@@ -23,7 +23,7 @@ class Business extends Model
         'name',
         'logo',
         'location',
-        'about'
+        'about',
     ];
     // protected $hidden = [];
     // protected $dates = [];

@@ -11,6 +11,5 @@ class VtiTableSeeder extends Seeder
      */
     public function run()
     {
-
     }
 }

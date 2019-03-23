@@ -2,9 +2,9 @@
 
 namespace App\Http\Controllers\Admin;
 
-use Excel;
 use App\Http\Controllers\Controller;
 use App\Imports\UsersImport;
+use Excel;
 use Illuminate\Http\Request;
 
 class ImportServiceProviderController extends Controller
