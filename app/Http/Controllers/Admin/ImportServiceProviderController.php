@@ -2,7 +2,6 @@
 
 namespace App\Http\Controllers\Admin;
 
-
 use App\Http\Controllers\Controller;
 
 class ImportServiceProviderController extends Controller
@@ -17,5 +16,3 @@ class ImportServiceProviderController extends Controller
         return response()->json('success');
     }
 }
-
-
