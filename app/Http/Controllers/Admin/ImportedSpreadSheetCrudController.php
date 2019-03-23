@@ -2,16 +2,14 @@
 
 namespace App\Http\Controllers\Admin;
 
-use Backpack\CRUD\app\Http\Controllers\CrudController;
-
-// VALIDATION: change the requests to match your own file names if you need form validation
 use App\Http\Requests\ImportedSpreadSheetRequest as StoreRequest;
+// VALIDATION: change the requests to match your own file names if you need form validation
 use App\Http\Requests\ImportedSpreadSheetRequest as UpdateRequest;
+use Backpack\CRUD\app\Http\Controllers\CrudController;
 use Backpack\CRUD\CrudPanel;
 
 /**
- * Class ImportedSpreadSheetCrudController
- * @package App\Http\Controllers\Admin
+ * Class ImportedSpreadSheetCrudController.
  * @property-read CrudPanel $crud
  */
 class ImportedSpreadSheetCrudController extends CrudController
@@ -24,7 +22,7 @@ class ImportedSpreadSheetCrudController extends CrudController
         |--------------------------------------------------------------------------
         */
         $this->crud->setModel('App\Models\ImportedSpreadSheet');
-        $this->crud->setRoute(config('backpack.base.route_prefix') . '/importedspreadsheet');
+        $this->crud->setRoute(config('backpack.base.route_prefix').'/importedspreadsheet');
         $this->crud->setEntityNameStrings('importedspreadsheet', 'imported_spread_sheets');
 
         /*
