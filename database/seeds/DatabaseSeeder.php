@@ -2,11 +2,13 @@
 
 //use Database\TruncateTable;
 use Illuminate\Database\Seeder;
+
 //use Database\DisableForeignKeys;
 
 class DatabaseSeeder extends Seeder
 {
 //    use DisableForeignKeys, TruncateTable;
+
     /**
      * Seed the application's database.
      *
