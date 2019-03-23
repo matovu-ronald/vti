@@ -59,8 +59,15 @@ class VtiCrudController extends CrudController
         $locationColumn = $this->textCol('location', 'Vocational Training Institute Location');
         $aboutColumn = $this->textCol('about', 'About the Vocational Training Institute');
         $nameColumn = $this->textCol('name', 'Vocational Training Institute Name');
+        $businessColumn = $this->select(
+            'business_id',
+            'Business Name',
+            'business',
+            'name',
+            'App\Models\Business'
+        );
 
-        $this->crud->addColumns([$logoColumn, $locationColumn, $aboutColumn, $nameColumn]);
+        $this->crud->addColumns([$logoColumn, $locationColumn, $aboutColumn, $nameColumn, $businessColumn]);
 
         $this->crud->allowAccess('show');
 
