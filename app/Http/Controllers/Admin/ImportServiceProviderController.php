@@ -2,7 +2,6 @@
 
 namespace App\Http\Controllers\Admin;
 
-
 use Excel;
 use App\Http\Controllers\Controller;
 use App\Imports\UsersImport;
@@ -23,5 +22,3 @@ class ImportServiceProviderController extends Controller
         return response()->json(['success' => 'Data imported Successfully']);
     }
 }
-
-

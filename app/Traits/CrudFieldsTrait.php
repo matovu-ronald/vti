@@ -61,8 +61,8 @@ trait CrudFieldsTrait
             'model' => $model, // foreign key model
             'hint' => $hint,
         ];
-        return $select;
 
+        return $select;
     }
 
     //image field
@@ -72,8 +72,9 @@ trait CrudFieldsTrait
             'name' => $name,
             'label' => $label,
             'type' => 'browse',
-            'hint' => $hint
+            'hint' => $hint,
         ];
+
         return $image;
     }
 
@@ -134,21 +135,22 @@ trait CrudFieldsTrait
     }
 
     //textare field
-    public function textarea($name, $label, $hint = '', $placeholder='')
+    public function textarea($name, $label, $hint = '', $placeholder = '')
     {
         $textarea = [
             'name' => $name,
             'label' => $label,
             'type' => 'textarea',
             'attributes' => [
-                'placeholder' => $placeholder
+                'placeholder' => $placeholder,
             ],
         ];
 
         return $textarea;
     }
+
     //number fields
-    public function numberField($name, $label, $hint='', $prefix='', $suffix='')
+    public function numberField($name, $label, $hint = '', $prefix = '', $suffix = '')
     {
         $number = [
             'name' => $name,
@@ -161,6 +163,7 @@ trait CrudFieldsTrait
 
         return $number;
     }
+
     //table
     public function tableField($name, $label, $entity, $cols, $max)
     {
@@ -173,8 +176,10 @@ trait CrudFieldsTrait
             'max' => $max, // maximum rows allowed in the table
             'min' => 1, // minimum rows allowed in the table
         ];
+
         return $table;
     }
+
     //location
     public function location($name, $label)
     {
@@ -186,14 +191,15 @@ trait CrudFieldsTrait
 
         return $location;
     }
+
     //date field
-    public function dateField($name, $label, $hint='')
+    public function dateField($name, $label, $hint = '')
     {
         $date = [
             'name' => $name,
             'label' => $label,
             'type' => 'date_picker',
-            'hint' => $hint
+            'hint' => $hint,
         ];
 
         return $date;
@@ -213,9 +219,10 @@ trait CrudFieldsTrait
             'end_default' => '3000-04-05 02:00', // default value for end_date
             'date_range_options' => [ // options sent to daterangepicker.js
                 'timePicker' => true,
-                'locale' => ['format' => 'DD/MM/YYYY HH:mm']
-            ]
+                'locale' => ['format' => 'DD/MM/YYYY HH:mm'],
+            ],
         ];
+
         return $datepicker;
     }
 
@@ -253,11 +260,9 @@ trait CrudFieldsTrait
         $time = [   // Time
             'name' => $name,
             'label' => $label,
-            'type' => 'time'
+            'type' => 'time',
         ];
 
         return $time;
     }
-
-
 }

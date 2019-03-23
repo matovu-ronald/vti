@@ -24,7 +24,7 @@ trait CrudColsTrait
             // run a function on the CRUD model and show its return value
             'name' => $name,
             'label' => $label, // Table column heading
-            'type' => "model_function",
+            'type' => 'model_function',
             'function_name' => $func, // the method in your Model
             // 'limit' => 100, // Limit the number of characters shown
         ];
@@ -43,8 +43,8 @@ trait CrudColsTrait
             'attribute' => $attribute, // foreign key attribute that is shown to user
             'model' => $model, // foreign key model
         ];
-        return $select;
 
+        return $select;
     }
 
     //image col
@@ -67,7 +67,7 @@ trait CrudColsTrait
         $check = [
             'name' => $name,
             'type' => 'check',
-            'label' => $label
+            'label' => $label,
         ];
 
         return $check;
@@ -79,7 +79,7 @@ trait CrudColsTrait
         $vid = [
             'name' => $name,
             'type' => 'video',
-            'label' => $label
+            'label' => $label,
         ];
 
         return $vid;
@@ -94,9 +94,7 @@ trait CrudColsTrait
             'type' => 'table',
             'columns' => $cols,
         ];
+
         return $table;
     }
-
-
-
 }
