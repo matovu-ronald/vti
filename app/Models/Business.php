@@ -19,7 +19,12 @@ class Business extends Model
     // protected $primaryKey = 'id';
     // public $timestamps = false;
     // protected $guarded = ['id'];
-    protected $fillable = [];
+    protected $fillable = [
+        'name',
+        'logo',
+        'location',
+        'about'
+    ];
     // protected $hidden = [];
     // protected $dates = [];
 
@@ -34,6 +39,14 @@ class Business extends Model
     | RELATIONS
     |--------------------------------------------------------------------------
     */
+
+    /**
+     * Get the vtis under the business.
+     */
+    public function vtis()
+    {
+        return $this->hasMany('App\Models\Vti');
+    }
 
     /*
     |--------------------------------------------------------------------------

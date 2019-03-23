@@ -5,6 +5,8 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Requests\BusinessRequest as StoreRequest;
 // VALIDATION: change the requests to match your own file names if you need form validation
 use App\Http\Requests\BusinessRequest as UpdateRequest;
+use App\Traits\CrudColsTrait;
+use App\Traits\CrudFieldsTrait;
 use Backpack\CRUD\app\Http\Controllers\CrudController;
 use Backpack\CRUD\CrudPanel;
 
@@ -14,6 +16,9 @@ use Backpack\CRUD\CrudPanel;
  */
 class BusinessCrudController extends CrudController
 {
+    use CrudFieldsTrait;
+    use CrudColsTrait;
+
     public function setup()
     {
         /*
@@ -33,6 +38,26 @@ class BusinessCrudController extends CrudController
 
         // TODO: remove setFromDb() and manually define Fields and Columns
         $this->crud->setFromDb();
+
+        // Fields
+        $name = $this->text('name', 'Business Name', 'Business Name');
+        $logo = $this->imageField('logo', 'Business Logo');
+        $location = $this->location('location', 'Business Location');
+        $about = $this->ckeditor('about', 'About the Business', 'Information about the business');
+
+        $this->crud->addFields([$name, $logo, $location, $about]);
+
+        // Columns
+        $logoColumn = $this->imageCol('logo', 'Business Logo', '30px', '30px');
+        $locationColumn = $this->textCol('location', 'Business Location');
+        $aboutColumn = $this->textCol('about', 'About the Business');
+        $nameColumn = $this->textCol('name', 'Business Name');
+
+        $this->crud->addColumns([$logoColumn, $locationColumn, $aboutColumn, $nameColumn]);
+
+        $this->crud->allowAccess('show');
+        $this->crud->enableBulkActions();
+        $this->crud->addBulkDeleteButton();
 
         // add asterisk for fields that are required in BusinessRequest
         $this->crud->setRequiredFields(StoreRequest::class, 'create');

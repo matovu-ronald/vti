@@ -19,7 +19,13 @@ class Vti extends Model
     // protected $primaryKey = 'id';
     // public $timestamps = false;
     // protected $guarded = ['id'];
-    protected $fillable = [];
+    protected $fillable = [
+        'business_id',
+        'name',
+        'logo',
+        'location',
+        'about',
+    ];
     // protected $hidden = [];
     // protected $dates = [];
 
@@ -34,6 +40,14 @@ class Vti extends Model
     | RELATIONS
     |--------------------------------------------------------------------------
     */
+
+    /**
+     * Get the business that owns the vti.
+     */
+    public function business()
+    {
+        return $this->belongsTo('App\Models\Business');
+    }
 
     /*
     |--------------------------------------------------------------------------
