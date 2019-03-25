@@ -23,20 +23,13 @@
             <div class="box">
                 <div class="box-header with-border">
                     <div class="box-title">
-                        <sampleexcel-component></sampleexcel-component>
+                        <sample-service-providers-excel-component></sample-service-providers-excel-component>
                     </div>
                 </div>
                 <div class="box-body">
-                    <fileupload-component></fileupload-component>
+                    <import-service-providers-component></import-service-providers-component>
                 </div>
             </div>
         </div>
     </div>
 @endsection
-<script>
-    import FileUploadComponent from "../../js/components/FileUploadComponent";
-
-    export default {
-        components: {FileUploadComponent}
-    }
-</script>

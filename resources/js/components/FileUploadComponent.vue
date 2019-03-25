@@ -8,7 +8,7 @@
                 successMessagePath=""
                 errorMessagePath=""
                 :minItems="1"
-                :maxItems="1"
+                :maxItems="30"
                 dropAreaPrimaryMessage="Drop Excel file here"
                 @upload-success='success_handler'
         >

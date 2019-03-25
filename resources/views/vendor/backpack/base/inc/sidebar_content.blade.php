@@ -11,7 +11,15 @@
     </ul>
 </li>
 
-<li><a href="{{ backpack_url('course') }}"><i class="fa fa-pencil-square"></i> <span>Courses</span></a></li>
+<!-- Courses -->
+<li class="treeview">
+    <a href="#"><i class="fa fa-pencil-square"></i> <span>Courses</span> <i class="fa fa-angle-left pull-right"></i></a>
+    <ul class="treeview-menu">
+        <li><a href="{{ backpack_url('course') }}"><i class="fa fa-pencil-square"></i> <span>Courses</span></a></li>
+        <li><a href="{{ route('course.create') }}"><i class="fa fa-file-excel-o"></i> <span>Import Courses</span></a></li>
+    </ul>
+</li>
+
 <li><a href="{{ backpack_url('vti') }}"><i class="fa fa-university"></i> <span>Vocational Training Institutes</span></a></li>
 <li><a href="{{ backpack_url('business') }}"><i class="fa fa-building"></i> <span>Businesses</span></a></li>
 

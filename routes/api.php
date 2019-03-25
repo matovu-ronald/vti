@@ -17,4 +17,6 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
     return $request->user();
 });
 
+// Imports
 Route::post('import/service/providers', 'Admin\ImportServiceProviderController@store')->name('import.store');
+Route::post('import/courses', 'Admin\ImportCourseController@store')->name('courses.store');

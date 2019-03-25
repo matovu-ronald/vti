@@ -20,9 +20,10 @@ window.Vue = require('vue');
 // const files = require.context('./', true, /\.vue$/i);
 // files.keys().map(key => Vue.component(key.split('/').pop().split('.')[0], files(key).default));
 
-Vue.component('example-component', require('./components/ExampleComponent.vue').default);
-Vue.component('fileupload-component', require('./components/FileUploadComponent.vue').default);
-Vue.component('sampleexcel-component', require('./components/SampleExcelComponent.vue').default);
+Vue.component('import-service-providers-component', require('./components/ImportServiceProvidersComponent.vue').default);
+Vue.component('import-courses-component', require('./components/ImportCoursesComponent.vue').default);
+Vue.component('sample-service-providers-excel-component', require('./components/SampleServiceProvidersExcelComponent.vue').default);
+Vue.component('sample-courses-excel-component', require('./components/SampleCoursesExcelComponent.vue').default);
 
 /**
  * Next, we will create a fresh Vue application instance and attach it to

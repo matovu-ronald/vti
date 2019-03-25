@@ -16,4 +16,5 @@ Route::group([
     CRUD::resource('course', 'CourseCrudController');
     CRUD::resource('bioprofile', 'BioProfileCrudController');
     Route::get('import/service/providers', 'ImportServiceProviderController@create')->name('import.create');
+    Route::get('import/courses/', 'ImportCourseController@create')->name('course.create');
 }); // this should be the absolute last line of this file
