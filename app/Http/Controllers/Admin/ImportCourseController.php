@@ -138,7 +138,6 @@ class ImportCourseController extends Controller
     {
         //
     }
-    
 
     /**
      * Validate Request Data
