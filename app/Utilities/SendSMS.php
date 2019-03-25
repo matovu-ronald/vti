@@ -16,7 +16,7 @@ class SendSMS
     }
 
     /**
-     * Send sms
+     * Send sms.
      *
      * @param $recepients
      * @param $sentMessage
@@ -27,19 +27,19 @@ class SendSMS
         $AT = new AfricasTalking($this->username, $this->apiKey);
 
         // Get one of the services
-        $sms      = $AT->sms();
+        $sms = $AT->sms();
 
         try {
             // Thats it, hit send and we'll take care of the rest
             $result = $sms->send([
                 'to'      => $recipients,
                 'message' => $message,
-                'from'    => $from
+                'from'    => $from,
             ]);
 
             print_r($result);
         } catch (Exception $e) {
-            echo "Error: ".$e->getMessage();
+            echo 'Error: '.$e->getMessage();
         }
 
         return $result;
