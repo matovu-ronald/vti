@@ -12,7 +12,7 @@
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    return redirect('/vocational-training-institute');
 });
 
 /* CATCH-ALL ROUTE for Backpack/PageManager - needs to be at the end of your routes.php file  **/
