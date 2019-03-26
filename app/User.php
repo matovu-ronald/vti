@@ -19,7 +19,7 @@ class User extends Authenticatable
      * @var array
      */
     protected $fillable = [
-        'name', 'email', 'password',
+        'name', 'email', 'password', 'vti_id', 'email_verified_at'
     ];
 
     /**
@@ -46,5 +46,13 @@ class User extends Authenticatable
     public function vti()
     {
         return $this->belongsTo('App\Models\Vti');
+    }
+
+    /**
+     * Get the bio profile for the user.
+     */
+    public function bioProfile()
+    {
+        return $this->hasOne('App\Models\BioProfile');
     }
 }

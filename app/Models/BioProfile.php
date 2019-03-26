@@ -20,7 +20,12 @@ class BioProfile extends Model
     // protected $primaryKey = 'id';
     // public $timestamps = false;
     // protected $guarded = ['id'];
-    protected $fillable = [];
+    protected $fillable = [
+        'user_id',
+        'phone',
+        'address',
+        'course',
+    ];
     // protected $hidden = [];
     // protected $dates = [];
 
@@ -35,6 +40,14 @@ class BioProfile extends Model
     | RELATIONS
     |--------------------------------------------------------------------------
     */
+
+    /**
+     * Get the user that owns the bio profile.
+     */
+    public function user()
+    {
+        return $this->belongsTo('App\User');
+    }
 
     /*
     |--------------------------------------------------------------------------
