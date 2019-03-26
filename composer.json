@@ -53,7 +53,10 @@
             "database/seeds",
             "database/factories"
         ],
-        "files": ["app/Helpers/permissions.php"]
+        "files": [
+            "app/Helpers/permissions.php",
+            "app/Helpers/mini_logo.php"
+        ]
     },
     "autoload-dev": {
         "psr-4": {
