@@ -13,8 +13,9 @@ class ExampleTest extends TestCase
      */
     public function testBasicTest()
     {
-        $response = $this->get('/vocational-training-institute');
+        $response = $this->get('/');
 
-        $response->assertStatus(200);
+        $response->assertResponseStatus(302);
+        $response->assertRedirect('vocational-training-institute');
     }
 }
