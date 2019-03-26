@@ -3,7 +3,7 @@
 <head>
     @include('backpack::inc.head')
 </head>
-<body class="hold-transition {{ config('backpack.base.skin') }} fixed">
+<body class="hold-transition {{ config('backpack.base.skin') }} login-page fixed">
     <!-- Site wrapper -->
     <div class="wrapper">
       <!-- Content Wrapper. Contains page content -->
