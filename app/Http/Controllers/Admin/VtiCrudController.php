@@ -108,7 +108,6 @@ class VtiCrudController extends CrudController
      */
     public function addCustomCrudFilters()
     {
-
         $this->crud->addFilter([ // text filter
             'type'  => 'text',
             'name'  => 'name',

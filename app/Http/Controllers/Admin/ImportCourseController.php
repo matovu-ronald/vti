@@ -54,10 +54,8 @@ class ImportCourseController extends Controller
                         Course::where('name', $course[1])->updateOrCreate([
                             'vti_id' => $course[0],
                             'name' => $course[1],
-                            'description' => $course[2]
+                            'description' => $course[2],
                         ]);
-
-
                     }
                     //\Log::info(\Auth::user()->name);
                     return response()->json(['message' => 'Courses imported successfully']);
@@ -90,7 +88,7 @@ class ImportCourseController extends Controller
     }
 
     /**
-     * Validate Request Data
+     * Validate Request Data.
      *
      * @param $data
      * @return mixed
