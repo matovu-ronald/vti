@@ -80,7 +80,7 @@ class ImportCourseController extends Controller
         $validator = \Validator::make($data,
             [
                 'items' => ['required'],
-                'items.*' => ['mimes:xlsx']
+                'items.*' => ['mimes:xlsx'],
             ], []);
 
         return $validator;
