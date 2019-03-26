@@ -51,35 +51,17 @@ class ImportCourseController extends Controller
                 if ($successUploaded) {
                     $courses = Excel::toCollection(new CoursesImport, $successUploaded);
                     foreach ($courses[0] as $course) {
-                        Course::where('name', $course[1])->updateOrCreate([
-                            'vti_id' => $course[0],
+                        Course::where('name', $course[1])->updateOrCreate(['name' => $course[1]],[
+                            'vti_id' => backpack_auth()->user()->vti->id,
                             'name' => $course[1],
                             'description' => $course[2],
                         ]);
                     }
-                    //\Log::info(\Auth::user()->name);
-                    return response()->json(['message' => 'Courses imported successfully']);
+                    \Alert::success($courses->count() . 'imported successfully');
+                    return response()->json(['successMsg' => 'Courses imported successfully']);
                 }
-
-                /*if ($data->count()) {
-                    foreach ($data as $key => $value) {
-                        $courseList[] = [
-                            'course_id' => 1,
-                            'name' => $value->name,
-                            'description' => $value->description
-                        ];
-                    }
-
-                    if (!empty($courseList)) {
-                        Course::insert($courseList);
-                        return response()->json([
-                            'message' => $data->count() . 'Courses imported successfully'
-                        ]);
-                    }
-                }*/
             }
 
-            \Log::info($request->all());
         } else {
             return response()->json([
                 'message' => 'Warning, there is no file to import',
