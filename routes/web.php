@@ -15,7 +15,6 @@ Route::get('/', function () {
     return redirect('/vocational-training-institute');
 });
 
-
 // Imports
 Route::prefix('api')->group(function () {
     Route::post('import/service/providers', 'Admin\ImportServiceProviderController@store')->name('import.store');

@@ -19,7 +19,7 @@ class Course extends Model
     protected $table = 'courses';
     // protected $primaryKey = 'id';
     // public $timestamps = false;
-     protected $guarded = ['id'];
+    protected $guarded = ['id'];
     // protected $fillable = ['vti_id', 'name', 'description'];
     // protected $hidden = [];
     // protected $dates = [];
