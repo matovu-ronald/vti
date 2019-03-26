@@ -25,5 +25,16 @@ class AppServiceProvider extends ServiceProvider
     public function boot()
     {
         Schema::defaultStringLength(191);
+        $this->overrideConfigValues();
+    }
+
+    protected function overrideConfigValues()
+    {
+        $config = [];
+        if (config('settings.skin'))
+            $config['backpack.base.skin'] = config('settings.skin');
+        if (config('settings.show_powered_by'))
+            $config['backpack.base.show_powered_by'] = config('settings.show_powered_by') == '1';
+        config($config);
     }
 }
