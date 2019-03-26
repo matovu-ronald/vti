@@ -43,7 +43,6 @@ class ImportServiceProviderController extends Controller
                 if ($successUploaded) {
                     $users = Excel::toCollection(new UsersImport(), $successUploaded);
                     foreach ($users[0] as $user) {
-
                         $userData = User::where('email', $user[1])->updateOrCreate(['email' => $user[1]], [
                             'vti_id' => backpack_auth()->user()->vti->id,
                             'name' => $user[0],
@@ -56,7 +55,7 @@ class ImportServiceProviderController extends Controller
                             'user_id' => $userData->id,
                             'phone' => $user[2],
                             'address' => $user[3],
-                            'course' => $user[4]
+                            'course' => $user[4],
                         ]);
 
                         \Log::info($userData);
@@ -85,7 +84,7 @@ class ImportServiceProviderController extends Controller
         $validator = \Validator::make($data,
             [
                 'items' => ['required'],
-                'items.*' => ['mimes:xlsx']
+                'items.*' => ['mimes:xlsx'],
             ], []);
 
         return $validator;
