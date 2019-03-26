@@ -15,11 +15,10 @@ class CreateBioProfilesTable extends Migration
     {
         Schema::create('bio_profiles', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->unsignedBigInteger('vti_id')->index();
             $table->unsignedBigInteger('user_id')->index();
             $table->string('phone')->nullable();
             $table->string('address')->nullable();
-            $table->unsignedBigInteger('course_id')->index();
+            $table->string('course')->nullable();
             $table->timestamps();
         });
     }
