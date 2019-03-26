@@ -1,6 +1,6 @@
 <header class="main-header">
   <!-- Logo -->
-  <a href="{{ url('') }}" class="logo">
+  <a href="{{ url('/') }}" class="logo">
     <!-- mini logo for sidebar mini 50x50 pixels -->
     <span class="logo-mini">{!! mini_logo(backpack_auth()->user()->vti->name) !!}</span>
     <!-- logo for regular state and mobile devices -->
