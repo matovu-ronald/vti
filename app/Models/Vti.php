@@ -21,7 +21,6 @@ class Vti extends Model
     // public $timestamps = false;
     // protected $guarded = ['id'];
     protected $fillable = [
-        'business_id',
         'name',
         'logo',
         'location',
@@ -43,11 +42,11 @@ class Vti extends Model
     */
 
     /**
-     * Get the business that owns the vti.
+     * Get the users for the vti
      */
-    public function business()
+    public function users()
     {
-        return $this->belongsTo('App\Models\Business');
+        return $this->hasMany('App\User');
     }
 
     /**

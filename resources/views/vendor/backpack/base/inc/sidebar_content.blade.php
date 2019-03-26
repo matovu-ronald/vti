@@ -21,7 +21,6 @@
 </li>
 
 <li><a href="{{ backpack_url('vti') }}"><i class="fa fa-university"></i> <span>Vocational Training Institutes</span></a></li>
-<li><a href="{{ backpack_url('business') }}"><i class="fa fa-building"></i> <span>Businesses</span></a></li>
 
 <!-- Users, Roles Permissions -->
 <li class="treeview">

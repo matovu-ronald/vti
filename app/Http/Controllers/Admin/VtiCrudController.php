@@ -40,34 +40,34 @@ class VtiCrudController extends CrudController
         $this->crud->setFromDb();
 
         // Fields
-        $business = $this->oneMany(
+        /*$business = $this->oneMany(
             'business_id',
             'Business Name',
             'business',
             'name',
             'App\Models\Business'
-        );
+        );*/
         $name = $this->text('name', 'Vocational Training Institute', 'Vocational Training Institute');
         $logo = $this->imageField('logo', 'Vocational Training Institute Logo');
         $location = $this->location('location', 'Vocational Training Institute Location');
         $about = $this->ckeditor('about', 'About the Vocational Training Institute', 'Information about the business');
 
-        $this->crud->addFields([$name, $logo, $location, $about, $business]);
+        $this->crud->addFields([$name, $logo, $location, $about]);
 
         // Columns
         $logoColumn = $this->imageCol('logo', 'Vocational Training Institute Logo', '30px', '30px');
         $locationColumn = $this->textCol('location', 'Vocational Training Institute Location');
         $aboutColumn = $this->textCol('about', 'About the Vocational Training Institute');
         $nameColumn = $this->textCol('name', 'Vocational Training Institute Name');
-        $businessColumn = $this->select(
+        /*$businessColumn = $this->select(
             'business_id',
             'Business Name',
             'business',
             'name',
             'App\Models\Business'
-        );
+        );*/
 
-        $this->crud->addColumns([$logoColumn, $locationColumn, $aboutColumn, $nameColumn, $businessColumn]);
+        $this->crud->addColumns([$logoColumn, $locationColumn, $aboutColumn, $nameColumn]);
 
         $this->crud->allowAccess('show');
 
@@ -80,6 +80,9 @@ class VtiCrudController extends CrudController
         // add asterisk for fields that are required in VtiRequest
         $this->crud->setRequiredFields(StoreRequest::class, 'create');
         $this->crud->setRequiredFields(UpdateRequest::class, 'edit');
+
+        // Filters
+        $this->addCustomCrudFilters();
     }
 
     public function store(StoreRequest $request)
@@ -98,5 +101,22 @@ class VtiCrudController extends CrudController
         // your additional operations after save here
         // use $this->data['entry'] or $this->crud->entry
         return $redirect_location;
+    }
+
+    /**
+     * Filters.
+     */
+    public function addCustomCrudFilters()
+    {
+
+        $this->crud->addFilter([ // text filter
+            'type'  => 'text',
+            'name'  => 'name',
+            'label' => 'Filter by Vocational Institute Name',
+        ],
+            false,
+            function ($value) { // if the filter is active
+                $this->crud->addClause('where', 'name', 'LIKE', "%$value%");
+            });
     }
 }

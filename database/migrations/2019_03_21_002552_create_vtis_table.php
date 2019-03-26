@@ -15,7 +15,6 @@ class CreateVtisTable extends Migration
     {
         Schema::create('vtis', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->unsignedBigInteger('business_id')->index();
             $table->string('name')->unique();
             $table->string('logo')->nullable();
             $table->text('location')->nullable();
