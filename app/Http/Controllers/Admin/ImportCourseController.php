@@ -2,10 +2,10 @@
 
 namespace App\Http\Controllers\Admin;
 
+use App\Http\Controllers\Controller;
 use App\Imports\CoursesImport;
 use App\Models\Course;
 use Illuminate\Http\Request;
-use App\Http\Controllers\Controller;
 use Maatwebsite\Excel\Facades\Excel;
 
 class ImportCourseController extends Controller
@@ -42,7 +42,6 @@ class ImportCourseController extends Controller
         }
 
         if ($request->hasFile('items')) {
-
             foreach ($request->file('items') as $item) {
                 $fileName = $item->getClientOriginalName();
 
@@ -64,7 +63,6 @@ class ImportCourseController extends Controller
                     return response()->json(['message' => 'Courses imported successfully']);
                 }
 
-
                 /*if ($data->count()) {
                     foreach ($data as $key => $value) {
                         $courseList[] = [
@@ -83,15 +81,12 @@ class ImportCourseController extends Controller
                 }*/
             }
 
-
             \Log::info($request->all());
-
         } else {
             return response()->json([
-                'message' => 'Warning, there is no file to import'
+                'message' => 'Warning, there is no file to import',
             ]);
         }
-
     }
 
     /**
