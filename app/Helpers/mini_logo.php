@@ -1,10 +1,11 @@
 <?php
 
-function mini_logo ($sentence) {
+function mini_logo($sentence)
+{
     //Separate words by spaces
     $words = preg_split("/\s+/", $sentence);
 
-    $miniLogo = "";
+    $miniLogo = '';
 
     foreach ($words as $word) {
         $miniLogo .= $word[0];

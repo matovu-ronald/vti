@@ -42,7 +42,7 @@ class Vti extends Model
     */
 
     /**
-     * Get the users for the vti
+     * Get the users for the vti.
      */
     public function users()
     {
