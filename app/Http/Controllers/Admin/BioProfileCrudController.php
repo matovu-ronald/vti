@@ -49,10 +49,6 @@ class BioProfileCrudController extends CrudController
             'Bio Information'
         );
 
-
-
-
-
         $this->crud->addFields([$user]);
 
         $userColumn = $this->select(
@@ -69,7 +65,6 @@ class BioProfileCrudController extends CrudController
 
         $this->crud->enableBulkActions();
         $this->crud->addBulkDeleteButton();
-
 
         // add asterisk for fields that are required in BioProfileRequest
         $this->crud->setRequiredFields(StoreRequest::class, 'create');

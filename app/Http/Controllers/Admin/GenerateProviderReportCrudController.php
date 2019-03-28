@@ -2,17 +2,15 @@
 
 namespace App\Http\Controllers\Admin;
 
-use App\Traits\CrudColsTrait;
-use Backpack\CRUD\app\Http\Controllers\CrudController;
-
-// VALIDATION: change the requests to match your own file names if you need form validation
 use App\Http\Requests\GenerateProviderReportRequest as StoreRequest;
 use App\Http\Requests\GenerateProviderReportRequest as UpdateRequest;
+// VALIDATION: change the requests to match your own file names if you need form validation
+use App\Traits\CrudColsTrait;
+use Backpack\CRUD\app\Http\Controllers\CrudController;
 use Backpack\CRUD\CrudPanel;
 
 /**
- * Class GenerateProviderReportCrudController
- * @package App\Http\Controllers\Admin
+ * Class GenerateProviderReportCrudController.
  * @property-read CrudPanel $crud
  */
 class GenerateProviderReportCrudController extends CrudController
@@ -27,7 +25,7 @@ class GenerateProviderReportCrudController extends CrudController
         |--------------------------------------------------------------------------
         */
         $this->crud->setModel('App\Models\GenerateProviderReport');
-        $this->crud->setRoute(config('backpack.base.route_prefix') . '/generateproviderreport');
+        $this->crud->setRoute(config('backpack.base.route_prefix').'/generateproviderreport');
         $this->crud->setEntityNameStrings('Generate provider report', 'Generate provider reports');
 
         /*
@@ -50,8 +48,8 @@ class GenerateProviderReportCrudController extends CrudController
             'end_default' => '1991-04-05 02:00', // default value for end_date
             'date_range_options' => [ // options sent to daterangepicker.js
                 'timePicker' => true,
-                'locale' => ['format' => 'DD/MM/YYYY HH:mm']
-            ]
+                'locale' => ['format' => 'DD/MM/YYYY HH:mm'],
+            ],
         ]);
 
         $userColumn = $this->select(
@@ -70,7 +68,6 @@ class GenerateProviderReportCrudController extends CrudController
         $this->crud->removeAllButtons();
 
         $this->crud->enableExportButtons();
-
 
         // add asterisk for fields that are required in GenerateProviderReportRequest
         $this->crud->setRequiredFields(StoreRequest::class, 'create');
@@ -108,7 +105,7 @@ class GenerateProviderReportCrudController extends CrudController
             // 'format' => 'YYYY/MM/DD',
             // 'locale' => ['format' => 'YYYY/MM/DD'],
             // 'showDropdowns' => true,
-             'showWeekNumbers' => true
+             'showWeekNumbers' => true,
             // ]
         ],
             false,

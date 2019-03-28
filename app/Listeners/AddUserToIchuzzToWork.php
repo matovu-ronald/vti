@@ -4,11 +4,7 @@ namespace App\Listeners;
 
 use App\Events\ServiceProviderCreated;
 use App\Models\RoleModel;
-use App\User;
-use Illuminate\Queue\InteractsWithQueue;
-use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Support\Facades\DB;
-use Spatie\Permission\Models\Role;
 
 class AddUserToIchuzzToWork
 {
@@ -35,7 +31,7 @@ class AddUserToIchuzzToWork
             'email' => $event->userData['email'],
             'email_verified_at' => $event->userData['email_verified_at'],
             'password' => $event->userData['password'],
-            'vti_id' => $event->userData['vti_id']
+            'vti_id' => $event->userData['vti_id'],
         ]))->setConnection('mysql2');
 
         $user->save();
@@ -44,7 +40,6 @@ class AddUserToIchuzzToWork
 
         $this->saveBioProfile($user, $event->bioProfile);
         $this->saveToProviderMap($user);
-
     }
 
     private function saveBioProfile($user, $bioProfile)
@@ -76,14 +71,12 @@ class AddUserToIchuzzToWork
             ->setConnection('mysql2')
             ->save();
         //}
-
     }
 
     private function assigUserRole($user)
     {
         $roles = DB::connection('mysql2')->select('select * from roles');
         foreach ($roles as $role) {
-
             if ($role->name == 'public') {
                 (new RoleModel([
                     'role_id' => $role->id,
@@ -103,8 +96,6 @@ class AddUserToIchuzzToWork
                     ->setConnection('mysql2')
                     ->save();
             }
-
         }
-
     }
 }

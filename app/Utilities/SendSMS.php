@@ -32,13 +32,13 @@ class SendSMS
         try {
             // Thats it, hit send and we'll take care of the rest
             $result = $sms->send([
-                'to' => '+' . $recipients,
+                'to' => '+'.$recipients,
                 'message' => $message,
             ]);
 
             print_r($result);
         } catch (Exception $e) {
-            echo 'Error: ' . $e->getMessage();
+            echo 'Error: '.$e->getMessage();
         }
 
         //\Log::info(print_r($result, true));

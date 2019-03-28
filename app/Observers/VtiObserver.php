@@ -3,8 +3,6 @@
 namespace App\Observers;
 
 use App\Models\Vti;
-use Illuminate\Support\Facades\Config;
-use Illuminate\Support\Facades\DB;
 
 class VtiObserver
 {
@@ -27,8 +25,6 @@ class VtiObserver
         $vtiData->about = $vti->about;
 
         $vtiData->save();*/
-
-
     }
 
     /**
@@ -39,8 +35,5 @@ class VtiObserver
      */
     public function updated(Vti $vti)
     {
-
     }
-
-
 }

@@ -4,8 +4,6 @@ namespace App\Listeners;
 
 use App\Events\VtiCreated;
 use App\Models\Vti;
-use Illuminate\Queue\InteractsWithQueue;
-use Illuminate\Contracts\Queue\ShouldQueue;
 
 class SaveVtiToIChuzzToWork
 {

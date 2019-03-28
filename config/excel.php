@@ -184,6 +184,6 @@ return [
 
     ],
     'import' => [
-        'startRow' => 2
-    ]
+        'startRow' => 2,
+    ],
 ];
