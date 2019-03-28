@@ -50,8 +50,6 @@ class ImportServiceProviderController extends Controller
                     $users = Excel::toCollection(new UsersImport(), $successUploaded);
                     foreach ($users[0] as $user) {
 
-
-
                         if (empty($user[1])) {
                             $this->userEmail = $this->generateUniqueEmail($user[0]);
                         }else {
@@ -124,7 +122,7 @@ class ImportServiceProviderController extends Controller
         $validator = \Validator::make($data,
             [
                 'items' => ['required'],
-                'items.*' => ['mimes:xlsx']
+                'items.*' => ['mimes:xlsx'],
             ], []);
 
         return $validator;
