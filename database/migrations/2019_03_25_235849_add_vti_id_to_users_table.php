@@ -14,7 +14,7 @@ class AddVtiIdToUsersTable extends Migration
     public function up()
     {
         Schema::table('users', function (Blueprint $table) {
-            $table->unsignedBigInteger('vti_id')->after('remember_token')->index();
+            $table->unsignedBigInteger('vti_id')->after('remember_token')->index()->default(0);
         });
     }
 
