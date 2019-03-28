@@ -2,6 +2,8 @@
 
 namespace App\Providers;
 
+use App\Models\Vti;
+use App\Observers\VtiObserver;
 use Illuminate\Support\Facades\Schema;
 use Illuminate\Support\ServiceProvider;
 
@@ -26,6 +28,9 @@ class AppServiceProvider extends ServiceProvider
     {
         Schema::defaultStringLength(191);
         $this->overrideConfigValues();
+
+        // Register vti observer
+        // Vti::observe(VtiObserver::class);
     }
 
     protected function overrideConfigValues()
@@ -39,4 +44,6 @@ class AppServiceProvider extends ServiceProvider
         }
         config($config);
     }
+
+
 }
