@@ -50,7 +50,7 @@ trait CrudFieldsTrait
     }
 
     //one to many select2
-    public function oneMany($name, $label, $entity, $attribute, $model, $hint = '')
+    public function oneMany($name, $label, $entity, $attribute, $model, $hint = '', $tab = '')
     {
         $select = [  // Select2
             'label' => $label,
