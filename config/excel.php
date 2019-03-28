@@ -183,4 +183,7 @@ return [
         'remote_disk' => null,
 
     ],
+    'import' => [
+        'startRow' => 2
+    ]
 ];
