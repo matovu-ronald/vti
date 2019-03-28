@@ -2,7 +2,7 @@
 
 namespace App\Imports;
 
-use App\User;
+use App\Models\BackpackUser;
 use Maatwebsite\Excel\Concerns\ToModel;
 
 class UsersImport implements ToModel
@@ -14,7 +14,7 @@ class UsersImport implements ToModel
      */
     public function model(array $row)
     {
-        return new User([
+        return new BackpackUser([
             'name'     => $row[0],
             'email'    => $row[1],
             'password' => Hash::make($row[2]),
