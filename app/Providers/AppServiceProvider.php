@@ -44,6 +44,4 @@ class AppServiceProvider extends ServiceProvider
         }
         config($config);
     }
-
-
 }

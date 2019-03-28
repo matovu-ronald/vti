@@ -3,8 +3,6 @@
 namespace App\Listeners;
 
 use App\Events\VtiUpdated;
-use Illuminate\Queue\InteractsWithQueue;
-use Illuminate\Contracts\Queue\ShouldQueue;
 
 class UpdateVtiToIChuzzToWork
 {
@@ -26,6 +24,5 @@ class UpdateVtiToIChuzzToWork
      */
     public function handle(VtiUpdated $event)
     {
-
     }
 }

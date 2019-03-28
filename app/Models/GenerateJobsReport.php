@@ -2,8 +2,8 @@
 
 namespace App\Models;
 
-use Illuminate\Database\Eloquent\Model;
 use Backpack\CRUD\CrudTrait;
+use Illuminate\Database\Eloquent\Model;
 
 class GenerateJobsReport extends Model
 {
@@ -14,7 +14,7 @@ class GenerateJobsReport extends Model
     | GLOBAL VARIABLES
     |--------------------------------------------------------------------------
     */
-    protected $connection= 'mysql2';
+    protected $connection = 'mysql2';
 
     protected $table = 'service_delivery_offers';
     // protected $primaryKey = 'id';
