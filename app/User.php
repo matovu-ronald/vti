@@ -2,16 +2,20 @@
 
 namespace App;
 
+use App\Scopes\LatestScope;
+use App\Scopes\VtiData;
 use Backpack\CRUD\CrudTrait;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use Spatie\Permission\Traits\HasRoles;
+use Cviebrock\EloquentSluggable\Sluggable;
 
 class User extends Authenticatable
 {
     use Notifiable;
     use CrudTrait;
     use HasRoles;
+    use Sluggable;
 
     /**
      * The attributes that are mass assignable.
@@ -54,5 +58,34 @@ class User extends Authenticatable
     public function bioProfile()
     {
         return $this->hasOne('App\Models\BioProfile');
+    }
+
+    /**
+     * Return the sluggable configuration array for this model.
+     *
+     * @return array
+     */
+    public function sluggable()
+    {
+        return [
+            'email' => [
+                'source' => 'email',
+                'separator'          => '.',
+                'unique'             => true,
+
+            ]
+        ];
+    }
+
+    /**
+     * The "booting" method of the model.
+     *
+     * @return void
+     */
+    protected static function boot()
+    {
+        parent::boot();
+
+        static::addGlobalScope(new LatestScope);
     }
 }
