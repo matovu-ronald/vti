@@ -2,6 +2,8 @@
 
 namespace App\Models;
 
+use App\Events\VtiCreated;
+use App\Events\VtiUpdated;
 use App\Scopes\LatestScope;
 use Backpack\CRUD\CrudTrait;
 use Illuminate\Database\Eloquent\Model;
@@ -28,12 +30,23 @@ class Vti extends Model
     ];
     // protected $hidden = [];
     // protected $dates = [];
+    /**
+     * The event map for the model.
+     *
+     * @var array
+     */
+    protected $dispatchesEvents = [
+        // 'created' => VtiCreated::class,
+        //'updated' => VtiUpdated::class,
+    ];
 
     /*
     |--------------------------------------------------------------------------
     | FUNCTIONS
     |--------------------------------------------------------------------------
     */
+
+
 
     /*
     |--------------------------------------------------------------------------
@@ -47,6 +60,14 @@ class Vti extends Model
     public function users()
     {
         return $this->hasMany('App\User');
+    }
+
+    /**
+     * Get the users for the vti.
+     */
+    public function backpackUsers()
+    {
+        return $this->hasMany('App\Models\BackpackUser');
     }
 
     /**
