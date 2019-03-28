@@ -3,6 +3,7 @@
 namespace App\Models;
 
 use App\Scopes\LatestScope;
+use App\Scopes\VtiData;
 use Backpack\CRUD\CrudTrait;
 use Illuminate\Database\Eloquent\Model;
 
@@ -25,6 +26,7 @@ class BioProfile extends Model
         'phone',
         'address',
         'course',
+        'phone_number'
     ];
     // protected $hidden = [];
     // protected $dates = [];
@@ -65,6 +67,8 @@ class BioProfile extends Model
         parent::boot();
 
         static::addGlobalScope(new LatestScope);
+
+
     }
 
     /*
