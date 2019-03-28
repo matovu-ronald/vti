@@ -3,6 +3,7 @@
 namespace App\Models;
 
 use App\Scopes\LatestScope;
+use App\Scopes\VtiData;
 use Backpack\CRUD\CrudTrait;
 use Illuminate\Database\Eloquent\Model;
 
@@ -60,6 +61,7 @@ class Course extends Model
         parent::boot();
 
         static::addGlobalScope(new LatestScope);
+        static::addGlobalScope(new VtiData);
     }
 
     /*
