@@ -24,6 +24,7 @@ Vue.component('import-service-providers-component', require('./components/Import
 Vue.component('import-courses-component', require('./components/ImportCoursesComponent.vue').default);
 Vue.component('sample-service-providers-excel-component', require('./components/SampleServiceProvidersExcelComponent.vue').default);
 Vue.component('sample-courses-excel-component', require('./components/SampleCoursesExcelComponent.vue').default);
+Vue.component('jobs-chart-component', require('./components/JobsChartComponent.vue').default);
 
 /**
  * Next, we will create a fresh Vue application instance and attach it to
