@@ -25,7 +25,7 @@ class VtiRequest extends FormRequest
     public function rules()
     {
         return [
-            'name' => 'required|min:2|max:255|unique:vtis,name',
+            'name' => 'required|min:2|max:255',
             'logo' => 'max:255',
             'location' => 'max:255',
         ];
