@@ -5,6 +5,8 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Requests\BioProfileRequest as StoreRequest;
 // VALIDATION: change the requests to match your own file names if you need form validation
 use App\Http\Requests\BioProfileRequest as UpdateRequest;
+use App\Traits\CrudColsTrait;
+use App\Traits\CrudFieldsTrait;
 use Backpack\CRUD\app\Http\Controllers\CrudController;
 use Backpack\CRUD\CrudPanel;
 
@@ -14,6 +16,9 @@ use Backpack\CRUD\CrudPanel;
  */
 class BioProfileCrudController extends CrudController
 {
+    use CrudColsTrait;
+    use CrudFieldsTrait;
+
     public function setup()
     {
         /*
@@ -23,7 +28,7 @@ class BioProfileCrudController extends CrudController
         */
         $this->crud->setModel('App\Models\BioProfile');
         $this->crud->setRoute(config('backpack.base.route_prefix').'/bioprofile');
-        $this->crud->setEntityNameStrings('bioprofile', 'bio_profiles');
+        $this->crud->setEntityNameStrings('Bio profile', 'Bio profiles');
 
         /*
         |--------------------------------------------------------------------------
@@ -33,6 +38,38 @@ class BioProfileCrudController extends CrudController
 
         // TODO: remove setFromDb() and manually define Fields and Columns
         $this->crud->setFromDb();
+
+        $user = $this->oneMany(
+            'user_id',
+            'User Email',
+            'user',
+            'email',
+            'App\User',
+            '',
+            'Bio Information'
+        );
+
+
+
+
+
+        $this->crud->addFields([$user]);
+
+        $userColumn = $this->select(
+            'user_id',
+            'User Email',
+            'user',
+            'email',
+            'App\User'
+        );
+
+        $this->crud->addColumns([$userColumn]);
+
+        $this->crud->allowAccess('show');
+
+        $this->crud->enableBulkActions();
+        $this->crud->addBulkDeleteButton();
+
 
         // add asterisk for fields that are required in BioProfileRequest
         $this->crud->setRequiredFields(StoreRequest::class, 'create');
