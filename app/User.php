@@ -3,12 +3,11 @@
 namespace App;
 
 use App\Scopes\LatestScope;
-use App\Scopes\VtiData;
 use Backpack\CRUD\CrudTrait;
+use Cviebrock\EloquentSluggable\Sluggable;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use Spatie\Permission\Traits\HasRoles;
-use Cviebrock\EloquentSluggable\Sluggable;
 
 class User extends Authenticatable
 {
@@ -73,7 +72,7 @@ class User extends Authenticatable
                 'separator'          => '.',
                 'unique'             => true,
 
-            ]
+            ],
         ];
     }
 

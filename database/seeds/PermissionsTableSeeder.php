@@ -2,7 +2,6 @@
 
 use Carbon\Carbon;
 use Illuminate\Database\Seeder;
-use Illuminate\Database\Eloquent\Model;
 use Spatie\Permission\Models\Permission;
 
 class PermissionsTableSeeder extends Seeder
@@ -14,7 +13,7 @@ class PermissionsTableSeeder extends Seeder
      */
     public function run()
     {
-        $data = array(
+        $data = [
             ['name' => 'user.view'],
             ['name' => 'user.create'],
             ['name' => 'user.update'],
@@ -42,9 +41,9 @@ class PermissionsTableSeeder extends Seeder
 
             ['name' => 'ban_users'],
             ['name' => 'dashboard.data'],
-        );
+        ];
 
-        $insert_data = array();
+        $insert_data = [];
         $time_stamp = Carbon::now()->toDateTimeString();
         foreach ($data as $d) {
             $d['guard_name'] = 'web';

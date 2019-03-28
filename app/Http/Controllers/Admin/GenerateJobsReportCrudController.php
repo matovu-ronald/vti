@@ -2,16 +2,14 @@
 
 namespace App\Http\Controllers\Admin;
 
-use Backpack\CRUD\app\Http\Controllers\CrudController;
-
-// VALIDATION: change the requests to match your own file names if you need form validation
 use App\Http\Requests\GenerateJobsReportRequest as StoreRequest;
+// VALIDATION: change the requests to match your own file names if you need form validation
 use App\Http\Requests\GenerateJobsReportRequest as UpdateRequest;
+use Backpack\CRUD\app\Http\Controllers\CrudController;
 use Backpack\CRUD\CrudPanel;
 
 /**
- * Class GenerateJobsReportCrudController
- * @package App\Http\Controllers\Admin
+ * Class GenerateJobsReportCrudController.
  * @property-read CrudPanel $crud
  */
 class GenerateJobsReportCrudController extends CrudController
@@ -24,7 +22,7 @@ class GenerateJobsReportCrudController extends CrudController
         |--------------------------------------------------------------------------
         */
         $this->crud->setModel('App\Models\GenerateJobsReport');
-        $this->crud->setRoute(config('backpack.base.route_prefix') . '/generatejobsreport');
+        $this->crud->setRoute(config('backpack.base.route_prefix').'/generatejobsreport');
         $this->crud->setEntityNameStrings('Generate jobs report', 'Generate jobs reports');
 
         /*
@@ -48,7 +46,7 @@ class GenerateJobsReportCrudController extends CrudController
                 'type' => 'boolean',
                 // optionally override the Yes/No texts
                 // 'options' => [0 => 'Active', 1 => 'Inactive']
-            ]
+            ],
         ]);
 
         $this->crud->removeColumn('description');
@@ -91,7 +89,7 @@ class GenerateJobsReportCrudController extends CrudController
             // 'format' => 'YYYY/MM/DD',
             // 'locale' => ['format' => 'YYYY/MM/DD'],
             // 'showDropdowns' => true,
-            'showWeekNumbers' => true
+            'showWeekNumbers' => true,
             // ]
         ],
             false,

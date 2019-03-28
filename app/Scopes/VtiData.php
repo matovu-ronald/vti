@@ -17,8 +17,7 @@ class VtiData implements Scope
      */
     public function apply(Builder $builder, Model $model)
     {
-        if (!backpack_user()->hasRole('admin')) {
-
+        if (! backpack_user()->hasRole('admin')) {
             $builder->where('vti_id', backpack_user()->vti_id);
         }
     }

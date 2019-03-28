@@ -5,14 +5,13 @@ namespace App\Http\Controllers\Admin;
 use App\Events\ServiceProviderCreated;
 use App\Http\Controllers\Controller;
 use App\Imports\UsersImport;
-use App\Models\BackpackUser;
 use App\Models\BioProfile;
 use App\User;
 use Carbon\Carbon;
+use Cviebrock\EloquentSluggable\Services\SlugService;
 use Illuminate\Http\Request;
 use Illuminate\Support\Str;
 use Maatwebsite\Excel\Facades\Excel;
-use \Cviebrock\EloquentSluggable\Services\SlugService;
 
 class ImportServiceProviderController extends Controller
 {
@@ -49,10 +48,9 @@ class ImportServiceProviderController extends Controller
                     config(['excel.import.startRow' => 2]);
                     $users = Excel::toCollection(new UsersImport(), $successUploaded);
                     foreach ($users[0] as $user) {
-
                         if (empty($user[1])) {
                             $this->userEmail = $this->generateUniqueEmail($user[0]);
-                        }else {
+                        } else {
                             $this->userEmail = $user[1];
                         }
                         // Check if a bio profile with a certain phone number already exists
@@ -70,11 +68,10 @@ class ImportServiceProviderController extends Controller
                                 //'password' => bcrypt($this->userPassword),
                             ]);
 
-                            //$this->assignUserRoles($userData);
+                        //$this->assignUserRoles($userData);
 
                             // event(new ServiceProviderCreated($userData, $this->userPassword));
-
-                        }else {
+                        } else {
                             $this->userPassword = $this->randomPassword();
                             $userData = User::where('email', $user[1])->updateOrCreate(['email' => $user[1]], [
                                 'vti_id' => backpack_auth()->user()->vti->id,
@@ -90,13 +87,11 @@ class ImportServiceProviderController extends Controller
                                 'user_id' => $userData->id,
                                 'phone' => $user[2],
                                 'address' => $user[3],
-                                'course' => $user[4]
+                                'course' => $user[4],
                             ]);
 
                             event(new ServiceProviderCreated($userData, $this->userPassword, $bioProfile));
                         }
-
-
                     }
 
                     \Alert::success($users->count().'imported successfully');
@@ -129,7 +124,7 @@ class ImportServiceProviderController extends Controller
     }
 
     /**
-     * Generate random password
+     * Generate random password.
      *
      * @return string
      */
@@ -139,7 +134,7 @@ class ImportServiceProviderController extends Controller
     }
 
     /**
-     * Assign user roles
+     * Assign user roles.
      *
      * @param $userData
      */
@@ -153,13 +148,15 @@ class ImportServiceProviderController extends Controller
     }
 
     /**
-     * Generate unique Email
+     * Generate unique Email.
      *
      * @param $username
      * @return string
      */
-    private function generateUniqueEmail($username) {
+    private function generateUniqueEmail($username)
+    {
         $sluggedUsername = SlugService::createSlug(User::class, 'email', $username);
-        return $sluggedUsername . mt_rand(2, 999) . "@" .strtolower(mini_logo(backpack_auth()->user()->vti->name)). ".com";
+
+        return $sluggedUsername.mt_rand(2, 999).'@'.strtolower(mini_logo(backpack_auth()->user()->vti->name)).'.com';
     }
 }
