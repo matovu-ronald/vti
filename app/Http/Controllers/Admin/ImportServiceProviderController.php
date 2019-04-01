@@ -45,16 +45,15 @@ class ImportServiceProviderController extends Controller
                 $successUploaded = $item->move($destination, $fileName);
 
                 if ($successUploaded) {
-                    config(['excel.import.startRow' => 2]);
                     $users = Excel::toCollection(new UsersImport(), $successUploaded);
                     foreach ($users[0] as $user) {
-                        if (empty($user[1])) {
-                            $this->userEmail = $this->generateUniqueEmail($user[0]);
+                        if (empty($user['email'])) {
+                            $this->userEmail = $this->generateUniqueEmail($user['name']);
                         } else {
-                            $this->userEmail = $user[1];
+                            $this->userEmail = $user['email'];
                         }
                         // Check if a bio profile with a certain phone number already exists
-                        $bioData = BioProfile::where('phone', $user[2])->first();
+                        $bioData = BioProfile::where('phone', $user['phone'])->first();
 
                         // If the bio profile with the phone number already exists
                         // Update the user data associated with that bio profile
@@ -63,9 +62,7 @@ class ImportServiceProviderController extends Controller
                             $this->userPassword = $this->randomPassword();
                             $userData = User::where('id', $bioData->user_id)->update([
                                 'vti_id' => backpack_auth()->user()->vti->id,
-                                'name' => $user[0],
-                                //'email' => $this->userEmail,
-                                //'password' => bcrypt($this->userPassword),
+                                'name' => $user['name'],
                             ]);
 
                         //$this->assignUserRoles($userData);
@@ -73,9 +70,9 @@ class ImportServiceProviderController extends Controller
                             // event(new ServiceProviderCreated($userData, $this->userPassword));
                         } else {
                             $this->userPassword = $this->randomPassword();
-                            $userData = User::where('email', $user[1])->updateOrCreate(['email' => $user[1]], [
+                            $userData = User::where('email', $user['email'])->updateOrCreate(['email' => $user['email']], [
                                 'vti_id' => backpack_auth()->user()->vti->id,
-                                'name' => $user[0],
+                                'name' => $user['name'],
                                 'email' => $this->userEmail,
                                 'email_verified_at' => Carbon::now(),
                                 'password' => bcrypt($this->userPassword),
@@ -83,11 +80,11 @@ class ImportServiceProviderController extends Controller
 
                             $this->assignUserRoles($userData);
 
-                            $bioProfile = BioProfile::where('phone', $user[2])->updateOrCreate(['phone' => $user[2]], [
+                            $bioProfile = BioProfile::where('phone', $user['phone'])->updateOrCreate(['phone' => $user['phone']], [
                                 'user_id' => $userData->id,
-                                'phone' => $user[2],
-                                'address' => $user[3],
-                                'course' => $user[4],
+                                'phone' => $user['phone'],
+                                'address' => $user['address'],
+                                'course' => $user['course'],
                             ]);
 
                             event(new ServiceProviderCreated($userData, $this->userPassword, $bioProfile));
