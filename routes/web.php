@@ -25,6 +25,13 @@ Route::prefix('api')->group(function () {
     Route::post('import/courses', 'Admin\ImportCourseController@store')->name('courses.store');
 });
 
+Route::group([
+    'prefix' => config('backpack.base.route_prefix', 'admin'),
+    'middleware' => ['web', config('backpack.base.middleware_key', 'admin')],
+], function () { // custom admin routes
+    CRUD::resource('user', 'UserCrudController');
+});
+
 /* CATCH-ALL ROUTE for Backpack/PageManager - needs to be at the end of your routes.php file  **/
 Route::get('{page}/{subs?}', ['uses' => 'PageController@index'])
     ->where(['page' => '^((?!admin).)*$', 'subs' => '.*']);
