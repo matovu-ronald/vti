@@ -39,17 +39,24 @@ class CourseCrudController extends CrudController
         // TODO: remove setFromDb() and manually define Fields and Columns
         $this->crud->setFromDb();
 
-        $vti = $this->oneMany(
-            'vti_id',
-            'Vocational Training Institute',
-            'vti',
-            'name',
-            'App\Models\Vti'
-        );
+        $this->crud->addField([    // SELECT2
+            'label'         => 'Vocational Training Institute',
+            'type'          => 'select2',
+            'name'          => 'vti_id',
+            'entity'        => 'vti',
+            'attribute'     => 'name',
+            'model'         => "App\Models\Vti",
+            'options'   => backpack_user()->hasRole('vti') ? (function ($query) {
+                return $query->where('id', backpack_user()->vti_id)->get();
+            }) : (function ($query) {
+                return $query->orderBy('name', 'desc')->get();
+            }),
+        ]);
+
         $name = $this->text('name', 'Course Name', 'Course Name');
         $description = $this->textarea('description', 'Course description');
 
-        $this->crud->addFields([$name, $description, $vti]);
+        $this->crud->addFields([$name, $description]);
 
         // Columns
         $nameColumn = $this->textCol('name', 'Course Name');
