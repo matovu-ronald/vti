@@ -2,8 +2,6 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
-
 class UserCrudController extends \Backpack\PermissionManager\app\Http\Controllers\UserCrudController
 {
     public function setup()
@@ -28,10 +26,8 @@ class UserCrudController extends \Backpack\PermissionManager\app\Http\Controller
 
         ]);*/
 
-        if (!backpack_user()->hasRole('admin')) {
-
+        if (! backpack_user()->hasRole('admin')) {
             $this->crud->removeFields(['roles_and_permissions']);
         }
     }
-
 }
