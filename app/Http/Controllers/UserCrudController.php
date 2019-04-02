@@ -17,12 +17,16 @@ class UserCrudController extends \Backpack\PermissionManager\app\Http\Controller
             'entity'        => 'vti',
             'attribute'     => 'name',
             'model'         => "App\Models\Vti",
+            'options'   => backpack_user()->hasRole('vti') ? (function ($query) {
+                return $query->where('id', backpack_user()->vti_id)->get();
+            }) : (function ($query) {
+                return $query->orderBy('name', 'desc')->get();
+            }),
         ]);
 
-        $this->crud->addColumn([
+        /*$this->crud->addColumn([
 
-        ])
-
+        ]);*/
 
         if (!backpack_user()->hasRole('admin')) {
 
