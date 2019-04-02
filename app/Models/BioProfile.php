@@ -4,6 +4,7 @@ namespace App\Models;
 
 use App\Scopes\LatestScope;
 use Backpack\CRUD\CrudTrait;
+use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Model;
 
 class BioProfile extends Model
@@ -66,6 +67,11 @@ class BioProfile extends Model
         parent::boot();
 
         static::addGlobalScope(new LatestScope);
+        static::addGlobalScope('vti', function (Builder $builder) {
+            $builder->whereHas('user', function ($query) {
+                $query->where('vti_id', backpack_auth()->user()->vti_id);
+            });
+        });
     }
 
     /*
