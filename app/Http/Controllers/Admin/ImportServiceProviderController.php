@@ -59,9 +59,7 @@ class ImportServiceProviderController extends Controller
                         // Update the user data associated with that bio profile
                         // Donot create a new user
                         if ($bioData) {
-                            $this->userPassword = $this->randomPassword();
                             $userData = User::where('id', $bioData->user_id)->update([
-                                'vti_id' => backpack_auth()->user()->vti->id,
                                 'name' => $user['name'],
                             ]);
 
