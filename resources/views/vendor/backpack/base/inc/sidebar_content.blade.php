@@ -45,7 +45,7 @@
 
 @if(backpack_user()->hasRole('admin'))
     <li>
-        <a href="{{ backpack_url('vti') }}"><i class="fa fa-university"></i> <span>Vocational Training Institutes</span></a>
+        <a href="{{ backpack_url('vti') }}"><i class="fa fa-university"></i> <span>VTIs</span></a>
     </li>
 
     <!-- Statistical Analysis -->
