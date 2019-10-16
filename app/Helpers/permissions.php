@@ -22,7 +22,7 @@ function check_user_permissions($request, $actionName = null, $id = null)
     $currentActionName = $request->route()->getActionName();
 
     /* Get controller and action name from the action name */
-    list($controller, $method) = explode('@', $currentActionName);
+    [$controller, $method] = explode('@', $currentActionName);
     $controller = str_replace(["App\\Http\\Controllers\Api\\", 'Controller'], '', $controller);
 
     /* Create, Read, Update, Delete mapping to controller actions */
