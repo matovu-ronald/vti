@@ -26,7 +26,7 @@
     },
     "dependencies": {
         "@updivision/vue2-multi-uploader": "^1.6.2",
-        "chart.js": "^2.8.0",
+        "chart.js": "^2.9.4",
         "pnotify": "^4.0.0-beta.2",
         "vue-chartjs": "^3.4.2"
     }
